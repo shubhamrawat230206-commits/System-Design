@@ -1,0 +1,1303 @@
+# Clean Coding
+
+## 1. Clean Coding Mindset
+- Write simple, readable, and maintainable code.
+- Use meaningful variable and function names.
+- Create reusable functions.
+- Give each function one responsibility.
+- Test code to find errors.
+- Makes debugging, teamwork, and maintenance easier.
+
+## 2. Readable Code
+- Write code that is easy to understand.
+- Use meaningful names.
+- Maintain proper indentation.
+- Break large functions into smaller ones.
+- Add useful comments when needed.
+- Improves debugging and future modifications.
+
+## 3. Modular Code
+- Divide a large program into smaller modules.
+- Each module performs a specific task.
+- Example: User, Product, Order, and Payment modules.
+- Makes testing and maintenance easier.
+- Improves code reusability and teamwork.
+- Helps add new features easily.
+
+## 4. Maintainable Code
+- Write code that is easy to modify, debug, and update.
+- Use meaningful names and small functions.
+- Avoid code duplication.
+- Follow consistent coding styles.
+- Makes bug fixing easier.
+- Saves time and effort during future changes.
+
+## 5. Naming Conventions
+- Follow consistent rules for naming identifiers.
+- Use meaningful variable and function names.
+- Variable: `student_marks`
+- Function: `calculate_sum()`
+- Constant: `MAX_SIZE`
+- C is case-sensitive.
+- Avoid spaces and reserved keywords in identifiers.
+- Improves readability and reduces confusion.
+
+## 6. Code Smells and How to Avoid Them
+- Code smells indicate potential problems in code quality.
+- **Duplicate Code:** Create reusable functions.
+- **Long Functions:** Divide them into smaller functions.
+- **Poor Naming:** Use meaningful names.
+- **Complex Logic:** Simplify conditions and calculations.
+- Helps improve readability, testing, and maintenance.
+
+## 7. Scalable Code Structure
+- Organize code to support future growth and new features.
+- Divide the system into separate modules.
+- Example: Book, Student, Issue, and Fine modules.
+- `.c` files contain function implementations.
+- `.h` files contain function declarations.
+- `main.c` coordinates the application.
+- Improves organization, reusability, teamwork, and scalability.
+
+# Object-Oriented Thinking
+
+## 1. OOP Basics in C++
+
+- Object-Oriented Programming (OOP) organizes programs using classes and objects.
+- It represents real-world entities such as students, cars, and bank accounts.
+- **Class:** A blueprint for creating objects.
+- **Object:** An instance of a class.
+- **Encapsulation:** Combines data and functions in a single unit.
+- **Abstraction:** Hides unnecessary implementation details.
+- **Inheritance:** Allows a class to reuse another class's features.
+- **Polymorphism:** Allows the same interface to provide different behaviours.
+- **Advantages:** Code reusability, better organization, and easy maintenance.
+
+### Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Student {
+public:
+    int roll_no;
+    int marks;
+
+    void display() {
+        cout << "Roll No: " << roll_no << endl;
+        cout << "Marks: " << marks << endl;
+    }
+};
+
+int main() {
+    Student s1;
+
+    s1.roll_no = 1;
+    s1.marks = 90;
+
+    s1.display();
+
+    return 0;
+}
+```
+
+**Output:**
+```text
+Roll No: 1
+Marks: 90
+```
+
+- `Student` is a class.
+- `s1` is an object.
+- `roll_no` and `marks` are data members.
+- `display()` is a member function.
+
+---
+
+## 2. Encapsulation
+
+- Encapsulation combines data and related functions inside a class.
+- It controls access to data using `private` and `public`.
+- Private data cannot be accessed directly from outside the class.
+- Public methods provide controlled access to private data.
+- Example: A bank account manages its balance through methods.
+- **Advantages:** Data protection, controlled modifications, and easier maintenance.
+
+### Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class BankAccount {
+private:
+    int balance;
+
+public:
+    BankAccount() {
+        balance = 1000;
+    }
+
+    void deposit(int amount) {
+        if (amount > 0) {
+            balance += amount;
+        }
+    }
+
+    int getBalance() {
+        return balance;
+    }
+};
+
+int main() {
+    BankAccount account;
+
+    account.deposit(500);
+
+    cout << "Balance: " << account.getBalance() << endl;
+
+    return 0;
+}
+```
+
+**Output:**
+```text
+Balance: 1500
+```
+
+- `balance` is private.
+- `deposit()` updates the balance.
+- `getBalance()` returns the balance.
+- Negative deposits are rejected.
+
+---
+
+## 3. Abstraction
+
+- Abstraction shows essential functionality and hides internal implementation details.
+- It allows users to use a feature without knowing how it works internally.
+- Example: An ATM provides cash without exposing its internal software logic.
+- In C++, abstract classes can contain pure virtual functions.
+- A pure virtual function is declared using `= 0`.
+- **Advantages:** Reduces complexity and separates the interface from implementation.
+
+### Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Shape {
+public:
+    virtual void calculateArea() = 0;
+};
+
+class Rectangle : public Shape {
+private:
+    int length, width;
+
+public:
+    Rectangle(int l, int w) {
+        length = l;
+        width = w;
+    }
+
+    void calculateArea() override {
+        cout << "Area = " << length * width << endl;
+    }
+};
+
+int main() {
+    Rectangle r(10, 5);
+
+    r.calculateArea();
+
+    return 0;
+}
+```
+
+**Output:**
+```text
+Area = 50
+```
+
+- `Shape` is an abstract class.
+- `calculateArea() = 0` declares a pure virtual function.
+- `Rectangle` implements `calculateArea()`.
+- The user calls the function without needing to know its internal calculation.
+
+---
+
+## 4. Inheritance
+
+- Inheritance allows one class to acquire properties and functions from another class.
+- **Base Class:** The class whose features are inherited.
+- **Derived Class:** The class that inherits features.
+- It supports code reusability and extension.
+- Example: `Dog` inherits from `Animal`.
+- **Advantages:** Reduces duplication and makes code reuse easier.
+
+### Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    void eat() {
+        cout << "Animal is eating" << endl;
+    }
+};
+
+class Dog : public Animal {
+public:
+    void bark() {
+        cout << "Dog is barking" << endl;
+    }
+};
+
+int main() {
+    Dog d;
+
+    d.eat();
+    d.bark();
+
+    return 0;
+}
+```
+
+**Output:**
+```text
+Animal is eating
+Dog is barking
+```
+
+- `Animal` is the base class.
+- `Dog` is the derived class.
+- `Dog : public Animal` represents inheritance.
+- Object `d` can use both `eat()` and `bark()`.
+
+### Types of Inheritance
+
+**1. Single Inheritance**
+
+- One derived class inherits from one base class.
+
+```cpp
+class Dog : public Animal {};
+```
+
+```text
+Animal
+   |
+   v
+  Dog
+```
+
+**2. Multilevel Inheritance**
+
+- A class inherits from another derived class.
+
+```cpp
+class Dog : public Animal {};
+class Puppy : public Dog {};
+```
+
+```text
+Animal
+   |
+   v
+  Dog
+   |
+   v
+ Puppy
+```
+
+**3. Hierarchical Inheritance**
+
+- Multiple derived classes inherit from one base class.
+
+```cpp
+class Dog : public Animal {};
+class Cat : public Animal {};
+```
+
+```text
+    Animal
+    /    \
+   Dog    Cat
+```
+
+**4. Multiple Inheritance**
+
+- One derived class inherits from multiple base classes.
+
+```cpp
+class Child : public Father, public Mother {};
+```
+
+```text
+Father    Mother
+    \      /
+     Child
+```
+
+**5. Hybrid Inheritance**
+
+- Combines two or more types of inheritance.
+
+```text
+       Animal
+       /    \
+      Dog    Cat
+       \    /
+       Puppy
+```
+
+- Hybrid inheritance can involve the diamond problem when multiple inheritance creates more than one path to a common base class.
+- Virtual inheritance can help avoid duplicate base-class subobjects in such cases.
+
+---
+
+## 5. Composition
+
+- Composition is an OOP concept in which one class contains an object of another class.
+- It represents a **HAS-A relationship**.
+- Example: A Car HAS-A Engine.
+- Each class manages its own specific functionality.
+- **Advantages:** Code reuse, modularity, and easier maintenance.
+
+### Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Engine {
+public:
+    void start() {
+        cout << "Engine started" << endl;
+    }
+};
+
+class Car {
+private:
+    Engine engine;
+
+public:
+    void startCar() {
+        engine.start();
+        cout << "Car started" << endl;
+    }
+};
+
+int main() {
+    Car c;
+
+    c.startCar();
+
+    return 0;
+}
+```
+
+**Output:**
+```text
+Engine started
+Car started
+```
+
+- `Engine` defines engine-related behaviour.
+- `Car` contains an `Engine` object.
+- `startCar()` calls the engine's `start()` method.
+- Composition helps organize complex systems into smaller components.
+
+---
+
+## 6. Inheritance vs Composition
+
+- Both concepts support code reuse.
+- **Inheritance:** Represents an IS-A relationship.
+- **Composition:** Represents a HAS-A relationship.
+- Inheritance reuses features from a base class.
+- Composition builds a class using objects of other classes.
+
+### Examples
+
+```cpp
+class Dog : public Animal {};
+```
+
+- Dog IS-A Animal → Inheritance.
+
+```cpp
+class Car {
+    Engine engine;
+};
+```
+
+- Car HAS-A Engine → Composition.
+
+### Difference
+
+| Inheritance | Composition |
+|---|---|
+| Represents IS-A | Represents HAS-A |
+| Uses a base class | Contains another class's object |
+| Creates class hierarchies | Combines independent components |
+| Example: Dog and Animal | Example: Car and Engine |
+
+---
+
+## 7. Polymorphism
+
+- Polymorphism allows the same interface or function name to provide different behaviours.
+- It improves flexibility and extensibility.
+- C++ supports compile-time and runtime polymorphism.
+
+### A. Compile-Time Polymorphism
+
+- The compiler selects the appropriate function.
+- Function overloading is a common example.
+- Functions have the same name but different parameter lists.
+
+### Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Calculator {
+public:
+    int add(int a, int b) {
+        return a + b;
+    }
+
+    int add(int a, int b, int c) {
+        return a + b + c;
+    }
+};
+
+int main() {
+    Calculator c;
+
+    cout << c.add(10, 20) << endl;
+    cout << c.add(10, 20, 30) << endl;
+
+    return 0;
+}
+```
+
+**Output:**
+```text
+30
+60
+```
+
+- Both functions are named `add()`.
+- Their parameter lists are different.
+- The compiler selects the correct function based on the arguments.
+
+### B. Runtime Polymorphism
+
+- The appropriate function implementation is selected at runtime.
+- It uses virtual functions and function overriding.
+- Derived classes provide their own implementations of base-class functions.
+
+### Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+class Animal {
+public:
+    virtual void sound() {
+        cout << "Animal makes a sound" << endl;
+    }
+
+    virtual ~Animal() = default;
+};
+
+class Dog : public Animal {
+public:
+    void sound() override {
+        cout << "Dog barks" << endl;
+    }
+};
+
+class Cat : public Animal {
+public:
+    void sound() override {
+        cout << "Cat meows" << endl;
+    }
+};
+
+int main() {
+    Dog d;
+    Cat c;
+
+    Animal* a = &d;
+    a->sound();
+
+    a = &c;
+    a->sound();
+
+    return 0;
+}
+```
+
+**Output:**
+```text
+Dog barks
+Cat meows
+```
+
+- `Animal` is the base class.
+- `Dog` and `Cat` override `sound()`.
+- The `virtual` keyword enables runtime polymorphism.
+- The same base-class pointer calls different implementations depending on the object.
+
+### Advantages of Polymorphism
+
+- Makes code flexible and extensible.
+- Allows a common interface for different objects.
+- Reduces code duplication.
+- Makes adding new object types easier.
+- Improves maintainability.
+
+---
+
+## 8. Applications of OOP Principles
+
+### 1. Banking System — Encapsulation
+
+- Keeps the account balance private.
+- Uses `deposit()` and `withdraw()` methods to manage transactions.
+- Helps control access to account data.
+
+### 2. E-commerce System — Composition
+
+- An `Order` contains `OrderItem` objects.
+- Each order item stores product-related information.
+- Helps organize orders and their items.
+
+### 3. Game Development — Inheritance and Polymorphism
+
+- Classes such as `Warrior`, `Archer`, and `Mage` can inherit from a common character class.
+- Each character can implement different attack behaviours.
+- Makes it easier to add new character types.
+
+### 4. Hospital Management — Encapsulation and Abstraction
+
+- Encapsulation helps control access to patient records.
+- Abstraction simplifies operations such as appointment booking.
+- Makes complex functionality easier to use.
+
+### 5. Vehicle Management — Inheritance and Composition
+
+- `Car` and `Bike` can inherit from a `Vehicle` class.
+- A `Car` can contain an `Engine` object.
+- Helps reuse common vehicle features and organize components.
+
+
+# UML (Unified Modeling Language)
+
+## 1. Introduction to UML
+
+- UML stands for **Unified Modeling Language**.
+- It is a standard visual modeling language used to design, visualize, and document software systems.
+- UML diagrams help developers understand a system before writing code.
+- It represents classes, objects, relationships, and interactions.
+- UML improves communication between developers and team members.
+- It helps plan the software structure before implementation.
+
+### Why Is UML Used?
+
+- To understand the structure of a software system.
+- To represent classes and their relationships.
+- To improve communication among developers.
+- To plan the system before coding.
+- To document software design.
+- To make complex systems easier to understand.
+
+### Types of UML Diagrams
+
+- **Class Diagram:** Represents classes, attributes, methods, and relationships.
+- **Sequence Diagram:** Represents interactions between objects in time order.
+
+---
+
+## 2. Class Diagram
+
+### Definition
+
+- A Class Diagram is a structural UML diagram that represents classes, their attributes, methods, and relationships.
+- It shows which classes exist in a system and what data and behaviour they contain.
+- It helps developers plan the structure of an object-oriented system.
+
+### Example: Student Class Diagram
+
+```text
++-----------------------------+
+|           Student           |
++-----------------------------+
+| - name: string              |
+| - rollNo: int               |
+| - marks: float              |
++-----------------------------+
+| + displayDetails(): void    |
+| + calculateGrade(): char    |
++-----------------------------+
+```
+
+### Explanation
+
+- `Student` is the class name.
+- `name`, `rollNo`, and `marks` are attributes.
+- `displayDetails()` and `calculateGrade()` are methods.
+- A class is represented using a rectangle divided into three sections.
+- The first section contains the class name.
+- The second section contains attributes.
+- The third section contains methods.
+
+### Advantages of Class Diagrams
+
+- Clearly represents the software structure.
+- Helps plan classes before coding.
+- Makes class relationships easier to understand.
+- Improves communication between developers.
+- Supports object-oriented software design.
+
+### Steps to Create a Class Diagram
+
+**Step 1: Identify Classes**
+- Identify the main entities in the system.
+- Example: `Student`, `Teacher`, and `Course`.
+
+**Step 2: Identify Attributes**
+- List the data and properties of each class.
+- Example: `student_id`, `name`, and `age`.
+
+**Step 3: Identify Methods**
+- List the operations each class performs.
+- Example: `register()`, `attendClass()`, and `displayDetails()`.
+
+**Step 4: Draw Class Boxes**
+- Represent each class using a rectangle with three sections.
+- Add the class name, attributes, and methods.
+
+**Step 5: Show Relationships**
+- Connect classes using appropriate UML lines and symbols.
+- Use relationships such as association, inheritance, aggregation, composition, and dependency.
+
+### UML Relationship Symbols
+
+| Relationship | Symbol | Meaning |
+|---|---|---|
+| Association | `────` | Classes are connected. |
+| Inheritance | `────▷` | One class inherits from another. |
+| Aggregation | `◇────` | Weak whole-part relationship. |
+| Composition | `◆────` | Strong whole-part relationship. |
+| Dependency | `- - - →` | One class depends on another. |
+
+### UML Visibility Symbols
+
+- `-` Private member.
+- `+` Public member.
+- `#` Protected member.
+
+### Multiplicity Symbols
+
+- `1` — Exactly one object.
+- `0..*` — Zero or multiple objects.
+- `1..*` — One or multiple objects.
+
+---
+
+## 3. Sequence Diagram
+
+### Definition
+
+- A Sequence Diagram is a UML interaction diagram that shows messages exchanged between objects in chronological order.
+- It explains how different objects communicate to complete a particular task.
+- The order of messages is important.
+- It helps visualize the flow of a process.
+
+### Main Components
+
+**1. Actor**
+- A user or external entity that interacts with the system.
+- Examples: Customer, Student, and Admin.
+
+**2. Lifeline**
+- A vertical dashed line below an actor or object.
+- It represents the object's presence during an interaction.
+
+**3. Message**
+- An arrow representing communication between objects.
+- Examples: `login()` and `checkPassword()`.
+
+**4. Activation Bar**
+- A narrow rectangle on a lifeline.
+- It represents the period during which an object performs an operation.
+
+### Example: Login Sequence Diagram
+
+```text
+  User          Login System       Database
+   |                  |                 |
+   |---- login() ---->|                 |
+   |                  |-- checkUser() ->|
+   |                  |<-- result ------|
+   |<-- loginStatus() |                 |
+   |                  |                 |
+```
+
+### Explanation
+
+- The user sends a login request to the login system.
+- The login system checks the user's credentials with the database.
+- The database returns the result.
+- The login system returns the login status to the user.
+- Messages are executed in a specific sequence.
+
+### Advantages of Sequence Diagrams
+
+- Shows the order of interactions.
+- Helps understand the flow of a process.
+- Makes object communication clear.
+- Helps identify missing interactions.
+- Supports system design and debugging.
+
+---
+
+## 4. Class Diagram vs Sequence Diagram
+
+- Both are UML diagrams used to design and understand software systems.
+- A Class Diagram shows the static structure of a system.
+- A Sequence Diagram shows interactions between objects over time.
+
+
+# ER Diagram (ERD)
+
+## 1. Introduction to ER Diagram
+
+### Definition
+- An **ER Diagram (Entity-Relationship Diagram)** is a visual representation of entities, their attributes, and the relationships between them in a database.
+- It helps us understand what information will be stored in a database and how different pieces of information are connected.
+
+### Main Uses of ER Diagram
+- Helps plan the database structure.
+- Makes relationships between tables easier to understand.
+- Helps reduce data duplication.
+- Clarifies database requirements before implementation.
+
+## 2. Entity and Entity Set in ER Diagram
+
+### 2.1 Entity
+
+**Definition:**
+- An **Entity** is a real-world object or thing about which data is stored in a database.
+- It can represent a person, place, object, or other identifiable item.
+
+**Examples:**
+- Student
+- Teacher
+- College
+- Course
+- Employee
+- Book
+
+**Example: Student**
+
+| Student_ID | Name | Email |
+|---|---|---|
+| 101 | Rahul | rahul@gmail.com |
+
+- **Student** = Entity Type
+- **Rahul** = Entity Instance
+- **Student_ID, Name, Email** = Attributes
+
+An entity instance represents one particular object, such as a specific student.
+
+### 2.2 Entity Set
+
+**Definition:**
+- An **Entity Set** is a collection of entities of the same type that share the same attributes.
+
+**Example: Student Entity Set**
+
+| Student_ID | Name | Email |
+|---|---|---|
+| 101 | Rahul | rahul@gmail.com |
+| 102 | Priya | priya@gmail.com |
+| 103 | Aman | aman@gmail.com |
+
+- Rahul, Priya, and Aman are individual entities.
+- The collection of these students is called the **Student Entity Set**.
+
+## 3. Types of Attributes in ER Diagram
+
+### 3.1 Simple Attribute
+- An attribute that cannot be divided into smaller meaningful components.
+- **Examples:** Age, Salary, Gender.
+- **Example:** Age = 20.
+
+### 3.2 Composite Attribute
+- An attribute that can be divided into smaller sub-attributes.
+
+**Examples:**
+- Name → First_Name, Middle_Name, Last_Name
+- Address → House_No, City, State, PIN_Code
+
+### 3.3 Single-Valued Attribute
+- An attribute that has only one value for a particular entity.
+
+**Examples:**
+- Student_ID
+- Date_of_Birth
+- Blood_Group, when only one value is stored.
+
+**Example:** Rahul's Student_ID = 101.
+
+### 3.4 Multivalued Attribute
+- An attribute that can have multiple values for a single entity.
+
+**Examples:**
+- Phone_Number
+- Email_Address, when multiple email addresses are allowed.
+
+**Example:** Rahul may have two phone numbers.
+
+**ER Diagram Symbol:** Double oval (two oval outlines).
+
+### 3.5 Stored Attribute
+- An attribute whose value is directly stored in the database.
+
+**Examples:**
+- Date_of_Birth
+- Product_Price
+- Quantity
+
+**Example:** Date_of_Birth = 2005-04-12.
+
+### 3.6 Derived Attribute
+- An attribute whose value can be calculated from another stored attribute.
+
+**Example:**
+- Stored Attribute → Date_of_Birth
+- Derived Attribute → Age
+
+Age can be calculated using the Date_of_Birth and the current date.
+
+## 4. Relationships Between Entities in ER Diagram
+
+### 4.1 What Is a Relationship?
+
+**Definition:**
+- A **Relationship** represents an association or connection between two or more entities in a database.
+
+**Examples:**
+- Student enrolls in Course.
+- Teacher teaches Course.
+- Customer places Order.
+
+Here, `enrolls in`, `teaches`, and `places` represent relationships.
+
+### 4.2 Example: Student and Course
+
+```text
+STUDENT ─── ◇ ENROLLS ◇ ─── COURSE
+```
+
+- STUDENT = Entity
+- COURSE = Entity
+- ENROLLS = Relationship
+
+**ER Diagram Symbol:** A diamond (◇) represents a relationship in the traditional ER notation.
+
+## 5. Cardinality in ER Diagram
+
+**Definition:**
+- **Cardinality** specifies how many entities of one entity type can be associated with entities of another entity type.
+
+### Types of Relationships
+
+#### 5.1 One-to-One (1:1)
+- One entity is associated with only one entity of the other type, and vice versa.
+
+**Example:** Person and Passport.
+- One person has one passport.
+- Each passport belongs to one person in this example.
+
+#### 5.2 One-to-Many (1:N)
+- One entity can be associated with multiple entities of another type.
+
+**Example:** Department and Employees.
+- One department can have multiple employees.
+- Each employee belongs to one department in this example.
+
+#### 5.3 Many-to-Many (M:N)
+- Multiple entities of one type can be associated with multiple entities of another type.
+
+**Example:** Student and Course.
+- One student can enroll in multiple courses.
+- One course can have multiple students.
+
+## 6. Primary Key and Foreign Key in ERD
+
+### 6.1 Primary Key (PK)
+
+**Definition:**
+- A **Primary Key** is an attribute, or a combination of attributes, that uniquely identifies each record in a table.
+- It provides a unique identity for every record.
+
+**Example: STUDENT Table**
+
+| Student_ID (PK) | Name |
+|---|---|
+| 101 | Rahul |
+| 102 | Priya |
+| 103 | Aman |
+
+Here, `Student_ID` is the Primary Key because every student has a unique ID.
+
+**Rules of a Primary Key:**
+- Each value must be unique.
+- A Primary Key cannot contain NULL values.
+
+### 6.2 Foreign Key (FK)
+
+**Definition:**
+- A **Foreign Key** is an attribute, or a combination of attributes, that references a key in another table.
+- It helps establish relationships between tables.
+
+**Example: STUDENT Table**
+
+| Student_ID (PK) | Name |
+|---|---|
+| 101 | Rahul |
+| 102 | Priya |
+
+**ENROLLMENT Table**
+
+| Enrollment_ID (PK) | Student_ID (FK) | Course |
+|---|---|---|
+| 1 | 101 | Java |
+| 2 | 101 | Python |
+| 3 | 102 | C++ |
+
+**Explanation:**
+- `Enrollment_ID` in ENROLLMENT is the Primary Key.
+- `Student_ID` in STUDENT is the Primary Key.
+- `Student_ID` in ENROLLMENT is a Foreign Key that references `Student_ID` in STUDENT.
+- The Foreign Key connects enrollment records with the students who enrolled.
+
+
+# Machine Coding
+
+## 1. Introduction to Machine Coding
+
+### Definition
+- **Machine Coding** is the process of converting a problem statement into code to build a working application.
+- It involves understanding requirements, designing classes, implementing code, and testing the application.
+
+**Example:** Library Management System.
+
+**Machine Coding Workflow:**
+
+```text
+Requirements → Classes → Design → Coding → Testing
+```
+
+### Purpose of Machine Coding
+- To write readable, reusable, and maintainable code.
+- To apply Object-Oriented Programming (OOP) principles in real-world applications.
+- To develop working software with a clear structure.
+
+### Advantages
+- **Reusability:** Allows code to be reused.
+- **Maintainability:** Makes code easier to update.
+- **Modularity:** Divides code into smaller, manageable parts.
+- **Scalability:** Makes adding new features easier.
+- **Readability:** Makes code easier to understand.
+
+## 2. Requirement Analysis
+
+**Definition:**
+- Requirement Analysis is the process of identifying what an application must do and how it should perform.
+
+### Example: Library Management System
+
+Suppose we need to develop an application to manage a library.
+
+**Functional Requirements — What should the application do?**
+- Add books.
+- Display the list of books.
+- Issue books.
+- Return books.
+- Check book availability.
+
+**Non-Functional Requirements — How should the application perform?**
+- The application should respond quickly.
+- Data should be accurate and secure.
+- The code should be easy to maintain.
+
+## 3. Identifying Classes and Objects
+
+### Class
+- A **Class** is a blueprint used to create objects.
+- It defines the attributes and methods that its objects can have.
+
+### Object
+- An **Object** is an instance of a class.
+- It represents a specific entity with its own data and behavior.
+
+**Example:**
+
+| Class | Object |
+|---|---|
+| Book | book1 |
+| Student | student1 |
+| Librarian | librarian1 |
+
+### How to Identify Classes
+1. Understand the problem statement.
+2. Identify important nouns.
+3. Determine their responsibilities.
+4. Convert suitable nouns into classes.
+
+**Example:** In a Library Management System, `Book`, `Member`, and `Library` can be identified as classes.
+
+## 4. Class Design
+
+### Definition
+- **Class Design** is the process of defining a class's attributes, methods, and responsibilities.
+
+### Example: Book Class
+
+- **Attributes:** `bookId`, `title`, `author`
+- **Methods:** `displayDetails()`, `issueBook()`, `returnBook()`
+- **Responsibility:** Manage book details and issue status.
+
+### C++ Example
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+public:
+    int bookId;
+    string title;
+
+    void displayDetails() {
+        cout << bookId << " " << title;
+    }
+};
+```
+
+### Class Design Principles
+
+- **Encapsulation:** Combines data and methods within a class.
+- **Single Responsibility:** A class should have one main responsibility.
+- **Meaningful Naming:** Use clear and descriptive names.
+- **Low Coupling:** Minimize unnecessary dependencies between classes.
+- **High Cohesion:** Keep closely related tasks within the same class.
+
+## 5. Relationships Between Classes
+
+### Definition
+- A **Class Relationship** represents a connection or interaction between two or more classes.
+- It describes how classes are connected or how they use each other's functionality.
+
+### Types of Class Relationships
+
+#### 5.1 Association
+- Occurs when two classes interact with each other.
+- **Example:** A Teacher teaches Students.
+
+#### 5.2 Inheritance
+- Occurs when one class inherits properties and methods from another class.
+- **Example:** `Car` inherits from `Vehicle`.
+
+#### 5.3 Aggregation
+- Represents a weak whole-part relationship in which the contained object can exist independently.
+- **Example:** A Department contains Teachers. Teachers can exist even if the Department is removed.
+- **UML Symbol:** Hollow diamond (◇).
+
+#### 5.4 Composition
+- Represents a strong whole-part relationship in which the contained object's lifecycle depends on the whole.
+- **Example:** A House and its Rooms in a simplified model.
+- **UML Symbol:** Filled diamond (◆).
+
+## 6. Modular Code Implementation
+
+### Definition
+- **Modular Code Implementation** is the process of dividing a large program into smaller modules, where each module performs a specific task.
+
+### Example: Library Management System
+
+- **Book Module:** Add and search for books.
+- **Member Module:** Add and view members.
+- **Library Module:** Issue and return books.
+
+### C++ Example
+
+```cpp
+#include <iostream>
+using namespace std;
+
+void addBook() {
+    cout << "Book added" << endl;
+}
+
+void issueBook() {
+    cout << "Book issued" << endl;
+}
+
+void returnBook() {
+    cout << "Book returned" << endl;
+}
+
+int main() {
+    addBook();
+    issueBook();
+    returnBook();
+
+    return 0;
+}
+```
+
+### Advantages of Modular Code
+1. **Readability:** Makes code easier to understand.
+2. **Reusability:** Allows functions and modules to be reused.
+3. **Testing:** Enables individual modules to be tested separately.
+4. **Maintenance:** Makes changes easier.
+5. **Debugging:** Helps identify and fix errors.
+
+**Important Principles:**
+- **High Cohesion:** Keep related tasks together in a module.
+- **Low Coupling:** Minimize unnecessary dependencies between modules.
+
+## 7. Applying OOP Principles in Machine Coding
+
+OOP principles help make machine coding solutions organized, reusable, and maintainable.
+
+### Four Main Principles of OOP
+
+1. **Encapsulation:** Combines data and methods within a class and controls access to data.
+2. **Abstraction:** Hides unnecessary implementation details and exposes essential functionality.
+3. **Inheritance:** Allows a class to reuse properties and methods of another class.
+4. **Polymorphism:** Allows the same interface to have multiple forms of behavior.
+
+## 8. Exam Question: Explain Class Design with a Library Management System Example (10 Marks)
+
+### Definition
+- Class Design is the process of defining the attributes, methods, and responsibilities of classes in an application.
+
+### Classes in a Library Management System
+
+#### 1. Book Class
+- **Attributes:** `bookId`, `title`, `author`, `isIssued`
+- **Methods:** `displayDetails()`, `issueBook()`, `returnBook()`
+- **Responsibility:** Store book details and manage its issue status.
+
+#### 2. Member Class
+- **Attributes:** `memberId`, `name`
+- **Methods:** `borrowBook()`, `returnBook()`
+- **Responsibility:** Manage member details and borrowing activities.
+
+#### 3. Library Class
+- **Attributes:** `books`
+- **Methods:** `addBook()`, `searchBook()`, `displayBooks()`
+- **Responsibility:** Manage the book collection and provide library operations.
+
+### Benefits of Class Design
+- Organizes code into logical classes.
+- Improves code reusability.
+- Makes maintenance and testing easier.
+- Separates responsibilities between classes.
+- Supports the application of OOP principles.
+
+## 9. Exam Question: Write a C++ Program for a Simple Library Management System (10 Marks)
+
+### C++ Program
+
+```cpp
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Book {
+private:
+    int bookId;
+    string title;
+    bool isIssued;
+
+public:
+    Book(int id, string t) {
+        bookId = id;
+        title = t;
+        isIssued = false;
+    }
+
+    void displayDetails() {
+        cout << "Book ID: " << bookId << endl;
+        cout << "Title: " << title << endl;
+
+        if (isIssued)
+            cout << "Status: Issued" << endl;
+        else
+            cout << "Status: Available" << endl;
+    }
+
+    void issueBook() {
+        if (!isIssued) {
+            isIssued = true;
+            cout << "Book issued successfully." << endl;
+        } else {
+            cout << "Book is already issued." << endl;
+        }
+    }
+
+    void returnBook() {
+        if (isIssued) {
+            isIssued = false;
+            cout << "Book returned successfully." << endl;
+        } else {
+            cout << "Book was not issued." << endl;
+        }
+    }
+};
+
+int main() {
+    Book b1(101, "The Alchemist");
+
+    b1.displayDetails();
+    b1.issueBook();
+    b1.displayDetails();
+    b1.returnBook();
+
+    return 0;
+}
+```
+
+### Explanation
+- The `Book` class represents a book in the library.
+- The private attributes store the book ID, title, and issue status.
+- The constructor initializes the book details and marks the book as available.
+- `displayDetails()` displays the book's information and status.
+- `issueBook()` issues the book if it is available.
+- `returnBook()` marks an issued book as available again.
+- The `main()` function creates a `Book` object and demonstrates its operations.
+
+### OOP Concepts Used
+- **Class and Object:** `Book` is the class, and `b1` is its object.
+- **Encapsulation:** Book data is declared private and accessed through public methods.
+- **Constructor:** Initializes the book's attributes.
+- **Conditional Statements:** Check whether the book can be issued or returned.
+
