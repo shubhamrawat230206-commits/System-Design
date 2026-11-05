@@ -1,0 +1,1520 @@
+Part A: System Architecture
+1. Introduction to System Architecture
+1. Definition
+System Architecture is a blueprint or structure that defines how the different components of a software system are organized, how they work, and how they communicate with each other.
+
+In simple words, System Architecture explains how a software application will be designed and developed.
+
+In System Architecture, we decide:
+- What the different components of the application will be.
+- How the components will communicate with each other.
+- How data will be stored and processed.
+- How the application will be made secure and scalable.
+- How the system's performance and reliability will be maintained.
+2. Main Components of System Architecture
+1. Frontend: It is the user interface of an application with which the user interacts.
+2. Backend: It handles the main processing and business logic of the application.
+3. Database: It stores the application's data.
+4. Server: It receives and processes requests from clients.
+5. Network: It provides communication between different components.
+3. Importance of System Architecture
+1. Scalability: It helps the application handle an increasing number of users.
+2. Performance: It improves the speed and efficiency of the application.
+3. Maintainability: It makes the software easier to update and maintain.
+4. Security: It protects data and the application from unauthorized access.
+5. Reliability: It helps the system work properly and continuously.
+4. Types of System Architecture
+The common types of System Architecture are:
+1. Monolithic Architecture
+2. N-tier Architecture
+3. Microservices Architecture
+4. Serverless Architecture
+5. Event-Driven Architecture
+
+2. Monolithic Architecture
+1. Definition
+Monolithic Architecture is a traditional software architecture in which all the components of an application are developed and deployed within a single unit.
+
+In this architecture, the frontend, backend, business logic, and database interaction are all parts of the same application.
+
+In simple words, in Monolithic Architecture, the entire application works as a single unit.
+2. Structure of Monolithic Architecture
+The following layers are generally present in this architecture:
+1. Presentation Layer: It takes input from the user and displays the output.
+2. Business Logic Layer: It performs the main rules and calculations of the application.
+3. Data Access Layer: It reads data from and writes data to the database.
+4. Database: It stores the application's data.
+All these components are integrated within a single application.
+3. Working of Monolithic Architecture
+The working process of Monolithic Architecture is as follows:
+1. The user sends a request to the application.
+2. The Presentation Layer receives the request.
+3. The Business Logic Layer processes the request.
+4. The Data Access Layer fetches or updates the required data from the database.
+5. After processing, the response is returned to the user.
+Example: In an online shopping application, features such as login, product search, cart, and payment are present within the same application.
+4. Advantages of Monolithic Architecture
+1. Easy Development: Developing an application is simple in the beginning.
+2. Easy Deployment: The entire application is deployed as a single unit.
+3. Simple Testing: It is easy to test the application as a single unit.
+4. Easy Communication: Internal communication between components is simple.
+5. Less Complexity: The architecture is easy to understand for small applications.
+5. Disadvantages of Monolithic Architecture
+1. Difficult Scaling: If one part of the application becomes slow, the entire application has to be scaled.
+2. Difficult Maintenance: As the application becomes larger, understanding and managing the code becomes difficult.
+3. Single Point of Failure: If a major error occurs in the application, the entire application may stop working.
+4. Slow Deployment: Even to make a small change, the entire application may need to be deployed again.
+5. Technology Limitation: Using different technologies within a single application is difficult.
+6. Real-Life Example
+College Management System:
+
+A college management application may contain the following modules:
+1. Student Registration
+2. Attendance Management
+3. Fee Management
+4. Examination Management
+5. Result Management
+In Monolithic Architecture, all these modules are developed and deployed within a single application.
+
+3. N-tier Architecture
+1. Definition
+N-tier Architecture is a software architecture in which an application is divided into multiple independent layers or tiers.
+
+Each tier has its own specific responsibility and helps organize the application properly.
+
+In simple words, in N-tier Architecture, different tasks of an application are divided into separate layers.
+
+Here, N means any number of tiers.
+2. Structure of N-tier Architecture
+In N-tier Architecture, commonly three tiers are used:
+1. Presentation Tier (User Interface)
+- It is the topmost layer of the application.
+- The user interacts with the application through this layer.
+- It receives input from the user.
+- It displays the output after processing.
+Example: HTML, CSS, JavaScript, React.
+2. Application Tier (Business Logic)
+- It is the main processing layer of the application.
+- It processes the user's requests.
+- It performs the business rules and calculations of the application.
+- It manages communication between the Presentation Tier and the Data Tier.
+Example: Java, Python, Node.js.
+3. Data Tier (Database Layer)
+- It stores and manages the application's data.
+- It retrieves, inserts, updates, and deletes data.
+- It provides the required information to the application.
+Example: MySQL, MongoDB, PostgreSQL.
+3. Working of N-tier Architecture
+The working process of N-tier Architecture is as follows:
+1. The user sends a request to the Presentation Tier.
+2. The Presentation Tier forwards the request to the Application Tier.
+3. The Application Tier performs the business logic.
+4. If data is required, the Application Tier communicates with the Data Tier.
+5. The Data Tier returns the required data.
+6. The Application Tier processes the result and sends it to the Presentation Tier.
+7. The Presentation Tier displays the final result to the user.
+4. Example of N-tier Architecture
+Online Shopping Application (Amazon type):
+
+Suppose a user searches for a product.
+1. Presentation Tier: The user enters the product name in the search box.
+2. Application Tier: The system processes the product search request.
+3. Data Tier: Matching products are fetched from the database.
+4. Presentation Tier: The matching products are displayed to the user.
+5. Advantages of N-tier Architecture
+1. Scalability: Each tier can be scaled independently, depending on its deployment.
+2. Easy Maintenance: The code of different layers can be maintained separately.
+3. Reusability: Common layers can be reused in different applications.
+4. Security: The database is not accessed directly by the user, which improves security.
+5. Flexibility: Different technologies can be used in different tiers.
+6. Easy Testing: It is possible to test each layer independently.
+6. Disadvantages of N-tier Architecture
+1. Complexity: The architecture can become complex because it contains multiple layers.
+2. Cost: Multiple servers and infrastructure may be required.
+3. Network Latency: Communication between different tiers can cause additional delays.
+4. Difficult Configuration: Configuring and managing multiple tiers can be difficult.
+7. Real-Life Applications
+N-tier Architecture is used in:
+1. Banking Applications
+2. E-commerce Websites
+3. Hospital Management Systems
+4. College Management Systems
+5. Enterprise Applications
+
+4. Vertical Scaling (Scaling Up)
+1. Definition
+Vertical Scaling is a method of increasing the capacity of an existing server by adding more resources such as CPU, RAM, and storage.
+
+In simple words, Vertical Scaling means making an existing server more powerful.
+2. Diagram
+Before: The server has 4 GB RAM and 2 CPU cores.
+
+After: The same server has 16 GB RAM and 8 CPU cores.
+3. Working of Vertical Scaling
+1. Initially, the application runs on a single server.
+2. When the number of users and workload increases, the load on the server starts increasing.
+3. The server's RAM, CPU, and storage are increased.
+4. The more powerful server handles the increased workload.
+4. Advantages of Vertical Scaling
+1. Easy Implementation: Increasing resources in an existing server is easy.
+2. Simple Management: There is no requirement to manage multiple servers.
+3. Less Complexity: The infrastructure is relatively simple.
+4. Better Performance: More CPU and RAM can improve processing performance.
+5. Disadvantages of Vertical Scaling
+1. Hardware Limitation: The resources of a server cannot be increased unlimitedly.
+2. High Cost: Powerful hardware can be expensive.
+3. Single Point of Failure: If one server fails, the entire application can be affected.
+4. Downtime: Sometimes, the server has to be temporarily stopped to upgrade the hardware.
+6. Example
+Suppose a website is running on a server with 4 GB RAM. Due to an increase in users, the website is becoming slow.
+
+Now, the server's RAM is increased from 4 GB to 16 GB, and its CPU cores are increased from 2 to 8.
+
+This is called Vertical Scaling.
+
+5. Horizontal Scaling (Scaling Out)
+1. Definition
+Horizontal Scaling is a method of increasing system capacity by adding more servers or machines to distribute the workload.
+
+In simple words, instead of making an existing server more powerful, new servers are added in Horizontal Scaling.
+2. Diagram
+Before: The application runs on one server.
+
+After: The application runs on multiple servers.
+
+Load Balancer: It distributes incoming requests among different servers.
+3. Working of Horizontal Scaling
+1. Initially, the application runs on a single server.
+2. When the number of users increases, a single server cannot handle the workload.
+3. Additional servers are added to the system.
+4. The Load Balancer distributes incoming requests among different servers.
+5. Multiple servers work together to handle users' requests.
+4. Advantages of Horizontal Scaling
+1. High Scalability: New servers can be added according to requirements.
+2. High Availability: If one server fails, other servers can continue running the application, if properly configured.
+3. Load Distribution: The workload is distributed among multiple servers.
+4. Flexibility: Additional servers can easily be added when traffic increases.
+5. Disadvantages of Horizontal Scaling
+1. Complex Management: Managing multiple servers can be difficult.
+2. High Initial Cost: Additional servers and infrastructure are required.
+3. Network Communication: Communication between servers has to be managed.
+4. Data Consistency: Keeping data consistent across multiple servers can be challenging.
+6. Example
+Suppose 10,000 users visit an e-commerce website, and one server is unable to handle all the requests.
+
+Now, 3 additional servers are added, and the Load Balancer distributes requests among all 4 servers.
+
+This is called Horizontal Scaling.
+7. Difference Between Vertical and Horizontal Scaling
+Basis	Vertical Scaling	Horizontal Scaling
+Meaning	Increasing the resources of an existing server.	Adding more servers to the system.
+Method	Scaling Up	Scaling Out
+Hardware	More powerful hardware is used.	Multiple servers or machines are used.
+Cost	Powerful hardware can be expensive.	Additional servers and infrastructure are required.
+Complexity	Less complex to manage.	More complex to manage.
+Scalability	Limited by hardware capacity.	More servers can be added as required.
+Failure	A single server failure can affect the entire application.	Other servers can continue working if properly configured.
+Example	Increasing RAM from 4 GB to 16 GB.	Adding 3 more servers to an existing server.
+
+
+6. Latency and Throughput
+1. Latency
+Definition: Latency is the amount of time taken by a system to process a request and provide a response.
+
+In simple words, Latency means how much time it takes for a request to receive a response.
+- Latency is generally measured in milliseconds (ms).
+- Lower latency means a faster response.
+- Higher latency means a slower response.
+Example:
+
+Suppose a user searches on Google and the result is displayed in 200 milliseconds.
+
+Then, the latency of the request is approximately 200 ms.
+Factors Affecting Latency
+1. Network Delay: A slow internet connection can increase latency.
+2. Server Processing: The server takes more time to process a request.
+3. Distance: The geographical distance between the client and the server.
+4. Database Query: Taking more time to fetch data from the database.
+Advantages of Low Latency
+1. Faster response time.
+2. Better user experience.
+3. Smooth online gaming.
+4. Faster data communication.
+
+2. Throughput
+Definition: Throughput is the amount of data or the number of requests that a system can successfully process in a given period of time.
+
+In simple words, Throughput means how much data or how many requests a system can process in one second.
+- Throughput can be measured in requests per second (RPS) or bits per second (bps).
+- Higher throughput means more work can be processed in a given time.
+Example:
+
+Suppose a server successfully processes 1,000 requests in one second.
+
+Then, the throughput of the server is 1,000 requests per second (RPS).
+Factors Affecting Throughput
+1. CPU Capacity: A powerful CPU can process more requests.
+2. Memory: Sufficient RAM improves system performance.
+3. Network Bandwidth: Higher bandwidth allows more data to be transferred.
+4. Server Capacity: The processing capacity of the server affects throughput.
+Advantages of High Throughput
+1. It can process more requests.
+2. It can handle a large amount of data.
+3. Better resource utilization.
+4. It supports high-traffic applications.
+
+7. Latency vs Throughput
+Basis	Latency	Throughput
+Meaning	Time taken to process a request and provide a response.	Amount of data or number of requests processed in a given time.
+Focus	Response time.	Processing capacity.
+Measurement	Milliseconds (ms).	Requests per second (RPS) or bits per second (bps).
+Better Performance	Lower latency.	Higher throughput.
+Example	A Google search result appears in 200 ms.	A server processes 1,000 requests per second.
+
+Relationship Between Latency and Throughput
+1. Low latency means a faster response time.
+2. High throughput means processing more requests.
+3. Both are important factors in system performance.
+4. A system can have high throughput despite having high latency, especially under heavy load.
+
+
+Part B: Networking and Communication
+1. Introduction to Networking in System Design
+1. Definition
+Networking in System Design refers to the process of connecting different computers, servers, and devices so that they can communicate and exchange data with each other.
+
+In simple words, Networking means connecting different systems so that they can share and exchange information.
+
+In System Design, networking is used to establish communication between the client and the server.
+2. How Networking Works?
+The working process of Networking is as follows:
+1. Client: The user sends a request through an application.
+2. Network: The request reaches the server through the internet or network.
+3. Server: The server receives and processes the request.
+4. Database: If the server needs data, it fetches information from the database.
+5. Response: The server sends the processed result to the client.
+Example: When we open Instagram, the mobile application sends a request to the server. The server returns posts and other required data.
+3. Main Components of Networking
+1. Client: Sends a request, such as a mobile phone or computer.
+2. Server: Receives and processes the client's request.
+3. IP Address: Used for the identification and addressing of a device on a network.
+4. Router: Forwards data packets between different networks.
+5. Protocol: Defines the rules of communication, such as HTTP, HTTPS, and TCP.
+6. DNS: Translates a domain name into an IP address.
+4. Importance of Networking in System Design
+1. Communication: Establishes communication between different systems.
+2. Data Sharing: Exchanges data between different devices and servers.
+3. Scalability: Helps expand a system by connecting multiple servers.
+4. Performance: Efficient communication can improve system performance.
+5. Reliability: Availability can be improved by using multiple servers and network paths.
+6. Security: Data communication is secured through HTTPS and other security protocols.
+5. Common Networking Protocols
+
+2. REST API (Representational State Transfer API)
+1. Definition
+REST API is a type of Web API that follows REST (Representational State Transfer) architectural principles to allow communication between different applications using HTTP methods.
+
+In simple words, REST API is a communication method through which two different applications can exchange data over the internet.
+
+REST API generally uses HTTP methods such as GET, POST, PUT, PATCH, and DELETE.
+2. How REST API Works?
+The working process of REST API is as follows:
+1. Client Request: The client sends an HTTP request to the server.
+2. API Receives Request: The REST API receives the request.
+3. Server Processing: The server processes the request.
+4. Database Interaction: The required data is fetched from or updated in the database.
+5. Response: The server returns a response to the client, generally in JSON format.
+Example: When a user opens someone's profile on Instagram, the application can request profile information from the server through a REST API.
+3. HTTP Methods in REST API
+Mainly five HTTP methods are used in REST API.
+
+Example with Student Management System
+
+Suppose there is a Student Management System in which student data needs to be managed.
+1. GET Request
+GET /students
+
+
+Purpose: To retrieve the details of all students.
+2. POST Request
+POST /students
+
+
+Purpose: To add a new student.
+3. PUT Request
+PUT /students/101
+
+
+Purpose: To update the complete information of Student 101.
+4. PATCH Request
+PATCH /students/101
+
+
+Purpose: To update only specific information of Student 101.
+5. DELETE Request
+The source mentions five HTTP methods but does not provide a DELETE example in this section.
+4. Features / Principles of REST API
+1. Client-Server Architecture: The client and server perform different tasks. The client handles the user interface, and the server handles the data.
+2. Stateless: The server does not remember previous requests. The required information must be sent again with every request.
+3. Cacheable: The server's response can be stored, which avoids fetching the same data repeatedly and increases speed.
+4. Uniform Interface: REST API uses standard HTTP methods such as GET, POST, PUT, and DELETE for communication.
+5. Layered System: Layers such as a Proxy or Load Balancer can exist between the client and the actual server.
+5. Advantages of REST API
+1. Simple: REST API is easy to understand and implement.
+2. Scalability: The client and server can be scaled independently.
+3. Flexibility: It works with different programming languages and platforms.
+4. Performance: Performance can be improved through caching.
+5. Lightweight: Data exchange in JSON format is relatively lightweight.
+6. Disadvantages of REST API
+1. Multiple Requests: Complex operations may require multiple API requests.
+2. Over-fetching: Sometimes, more information than required is received.
+3. Under-fetching: Multiple requests may be needed to obtain the required information.
+4. Stateless Limitation: The client may need to provide the required authentication and request context with every request.
+7. Real-Life Applications of REST API
+1. Instagram
+2. Amazon
+3. YouTube
+4. Banking Applications
+
+3. RPC (Remote Procedure Call)
+1. Definition
+RPC (Remote Procedure Call) is a communication mechanism that allows a program to call a function or procedure on another computer or remote server as if it were a local function.
+
+In simple words, with the help of RPC, one computer can remotely call and execute a function on another computer.
+
+In this process, the developer does not need to manually handle network communication. The RPC framework handles the request and response.
+2. Diagram of RPC
+3. Working of RPC
+The working process of RPC consists of the following steps:
+1. Client Request: The client calls a remote function.
+2. Client Stub: The client stub converts the function call into a network request.
+3. Network: The request reaches the remote server through the network.
+4. Server Execution: The server executes the requested function.
+5. Response: The server returns the result of the function to the client.
+6. Client Receives Result: The client receives the result as if it came from a local function.
+4. Example of RPC
+Suppose there is a banking application in which a user wants to check their bank balance.
+
+On the client side:
+getBalance(101);
+
+
+Here, getBalance() is a remote function that executes on the server.
+
+The server fetches the account balance from the database and returns it to the client.
+
+Example Output:
+Account Number: 101
+Balance: ₹10,000
+
+
+The client does not need to manually handle the network request and response. The RPC framework performs this task.
+5. Features of RPC
+1. Remote Execution: Functions can be executed on a remote server.
+2. Simple Communication: Remote services can be used like function calls.
+3. Client-Server Model: The client sends a request, and the server executes it.
+4. Abstraction: It hides the complexity of network communication.
+5. Parameter Passing: The client can pass arguments to a function.
+6. Response Handling: The server returns the result after execution.
+6. Advantages of RPC
+1. Easy Development: Calling remote functions is simple.
+2. Code Reusability: Common functions can be maintained on remote servers.
+3. Less Complexity: The details of network communication are hidden.
+4. Distributed Computing: Tasks can be executed on different computers.
+5. Time Saving: Developers need to write less low-level networking code manually.
+7. Applications of RPC
+1. Microservices Communication
+2. Banking Applications
+3. Distributed Systems
+4. Cloud Computing
+
+4. GraphQL
+1. Definition
+GraphQL is a query language and runtime for APIs that allows clients to request exactly the data they need from a server.
+
+In simple words, GraphQL is an API technology in which the client decides what data it wants from the server.
+
+It reduces the problem of receiving unnecessary data.
+
+GraphQL was developed by Facebook (now Meta) and released publicly in 2015.
+2. Diagram of GraphQL
+3. Working of GraphQL
+The working process of GraphQL consists of the following steps:
+1. Client Request: The client sends a query to the server.
+2. GraphQL Server: The server receives the query.
+3. Query Processing: The GraphQL server checks which data the client has requested.
+4. Resolver: The resolver fetches the required data from the database or other sources.
+5. Response: The server returns the requested data in JSON format.
+6. Display: The client displays the received data in the application.
+4. Example of GraphQL
+Suppose there is a Student Management Application in which complete student information is available:
+- Student Name
+- Age
+- Email
+- Address
+- Phone Number
+But the client only needs the student's name and email.
+
+GraphQL Query:
+query {
+  student(id: 101) {
+    name
+    email
+  }
+}
+
+
+Response:
+{
+  "data": {
+    "student": {
+      "name": "Rahul",
+      "email": "rahul@gmail.com"
+    }
+  }
+}
+
+
+5. Features of GraphQL
+1. Flexible Queries: The client can request specific data according to its needs.
+2. Single Endpoint: GraphQL generally uses only one endpoint (/graphql).
+3. No Over-fetching: The client receives only the data it needs.
+4. No Under-fetching: Related data can be obtained in a single query, reducing the need for multiple requests.
+5. Strongly Typed Schema: GraphQL defines what data is available and what its type is.
+6. Real-Time Updates: With the help of subscriptions, the client can receive real-time data updates.
+6. Advantages of GraphQL
+1. Flexible: The client can request data according to its requirements.
+2. Efficient Data Fetching: Unnecessary data transfer is reduced.
+3. Fewer Requests: Related data can be fetched in a single query.
+4. Strong Type System: The API structure is clearly defined because of the schema.
+5. Developer Friendly: The API is easy to understand and use.
+
+5. WebSockets
+1. Definition
+WebSocket is a communication protocol that provides full-duplex (two-way) communication between a client and a server over a single, long-lived connection.
+
+In simple words, with the help of WebSockets, the client and server can send and receive real-time messages to and from each other over the same connection.
+
+Unlike traditional HTTP communication, WebSockets do not require a new connection to be established for every message.
+2. Diagram of WebSockets
+Explanation:
+1. A connection is established between the client and server.
+2. The connection remains open.
+3. The client can send messages to the server.
+4. The server can also send messages to the client.
+5. Both can communicate in real time.
+3. Working of WebSockets
+The working process of WebSockets consists of the following steps:
+1. Connection Request: The client sends a WebSocket connection request to the server.
+2. Handshake: An HTTP-based handshake takes place between the client and server.
+3. Connection Established: After a successful handshake, a WebSocket connection is established.
+4. Two-Way Communication: Both the client and server can independently send and receive messages.
+5. Connection Close: When communication is no longer required, the connection can be closed.
+4. Features of WebSockets
+1. Full-Duplex Communication: The client and server can simultaneously send and receive data.
+2. Real-Time Communication: Data can be exchanged immediately.
+3. Persistent Connection: The connection remains continuously open.
+4. Low Overhead: A new HTTP request is not required for every message.
+5. Bidirectional Communication: Both sides can initiate communication.
+5. Advantages of WebSockets
+1. Fast Communication: Real-time data exchange is possible.
+2. Low Latency: Repeated connection establishment is not required.
+3. Less Overhead: The overhead of repeated HTTP headers is reduced during continuous communication.
+4. Two-Way Communication: Both the client and server can send messages.
+5. Better User Experience: Live updates and instant notifications can be provided.
+6. Real-Life Examples
+1. Chat Applications
+
+Used for exchanging instant messages in WhatsApp-type applications.
+
+2. Online Gaming
+
+Used for sharing players' game movements and updates in real time.
+
+3. Stock Market Applications
+
+Used for providing live stock prices and market updates.
+
+4. Live Notifications
+
+Used for real-time notifications and live score updates.
+
+6. Difference Between REST vs RPC vs GraphQL
+7. Advantages and Disadvantages
+The source contains these headings but does not provide the corresponding comparison table or detailed points.
+
+7. HTTP Request and Response Basics
+1. Introduction to HTTP
+HTTP (HyperText Transfer Protocol) is a communication protocol used for transferring data between a client and a server over a network.
+
+In simple words, HTTP is a set of rules through which a client and server communicate with each other.
+1. The client sends a request.
+2. The server receives and processes the request.
+3. The server returns a response to the client.
+Example: When we search on Google, the browser sends an HTTP request to Google's server, and the server returns the search results.
+2. HTTP Request
+Definition
+
+An HTTP Request is a message sent by a client to a server to request a resource or perform a particular operation.
+
+In simple words, an HTTP Request means a request sent by the client to the server.
+Components of HTTP Request
+There are mainly four important components of an HTTP Request:
+1. Request Line
+The Request Line contains the HTTP method, URL/path, and HTTP version.
+
+Example:
+GET /students HTTP/1.1
+
+
+- GET = HTTP Method
+- /students = Resource Path
+- HTTP/1.1 = HTTP Version
+2. Headers
+Headers provide additional information, such as content type, authentication, and the accepted data format.
+
+Example:
+Content-Type: application/json
+Authorization: Bearer token123
+
+
+3. Body
+The Body contains data that the client sends to the server. It is mainly used in POST, PUT, and PATCH requests.
+
+Example:
+{
+  "name": "Rahul",
+  "age": 20
+}
+
+
+4. HTTP Method
+The HTTP Method defines what operation the client wants to perform on the server.
+
+3. HTTP Response
+Definition
+
+An HTTP Response is a message sent by the server to the client after processing an HTTP request.
+
+In simple words, an HTTP Response means the answer given by the server to the client.
+Components of HTTP Response
+There are mainly four components of an HTTP Response:
+1. Status Line
+The Status Line contains the HTTP version, status code, and status message.
+
+Example:
+HTTP/1.1 200 OK
+
+
+- HTTP/1.1 = HTTP Version
+- 200 = Status Code
+- OK = Status Message
+2. Headers
+Headers provide additional information about the response.
+
+Example:
+Content-Type: application/json
+Content-Length: 85
+
+
+3. Body
+The Body contains the actual response or requested data from the server.
+
+Example:
+{
+  "id": 101,
+  "name": "Rahul",
+  "age": 20
+}
+
+
+4. Status Code
+The Status Code indicates whether the client's request was successfully processed or whether an error occurred.
+4. Important HTTP Status Codes
+HTTP Status Codes are mainly divided into five categories.
+
+The source does not include the names or individual codes of these five categories.
+
+Part C: Load Balancing
+1. Introduction to Load Balancing
+1. Meaning / Definition
+Load Balancing is a technique in which incoming network traffic or user requests are distributed among multiple servers so that excessive load does not fall on a single server.
+
+The system that performs this process is called a Load Balancer.
+
+Simple Example:
+
+Suppose 10,000 users visit a website at the same time. If all requests go to a single server, the server may become slow or crash.
+
+Therefore, the Load Balancer divides the requests among multiple servers.
+2. Working of Load Balancing
+Working Steps:
+1. The client sends a request to the website.
+2. The request reaches the Load Balancer.
+3. The Load Balancer checks the condition of the available servers.
+4. It forwards the request to a suitable server.
+5. The server processes the request and sends the response to the client.
+3. Advantages of Load Balancing
+1. High Availability: If one server fails, requests can be sent to other servers.
+2. Better Performance: Requests are divided among multiple servers, which improves response time.
+3. Scalability: Additional servers can be added when traffic increases.
+4. Fault Tolerance: The system does not completely stop when a server fails.
+5. Resource Utilization: The resources of all servers are properly utilized.
+4. Types of Load Balancers
+Load Balancers are mainly divided into two types based on the OSI Model:
+1. Layer 4 (L4) Load Balancer
+2. Layer 7 (L7) Load Balancer
+
+2. Layer 4 (L4) Load Balancer
+1. Definition
+A Layer 4 Load Balancer works at the Transport Layer of the OSI Model.
+
+It distributes incoming requests among multiple servers based on IP Addresses, TCP/UDP, and Port Numbers.
+2. Features
+1. Transport Layer: It works at Layer 4 of the OSI Model.
+2. IP Address: It uses source and destination IP addresses.
+3. Port Number: It forwards traffic based on TCP/UDP port numbers.
+4. Fast Processing: It generally works faster because it does not deeply inspect application data.
+5. High Traffic: It is useful for handling high-volume network traffic.
+3. Example
+Suppose a website has three servers:
+- Server A
+- Server B
+- Server C
+If multiple users send TCP requests, the L4 Load Balancer distributes these requests among the available servers.
+4. Understanding Layer 4 Load Balancing Through a Diagram
+1. What is a Layer 4 Load Balancer?
+It works at the Transport Layer (Layer 4) of the OSI Model.
+
+Its main task is to distribute traffic by looking only at IP addresses and ports (such as TCP/UDP ports).
+
+It cannot read the data inside the packet, such as URLs, HTTP headers, cookies, or message content.
+2. Components and Flow of the Diagram
+Client / Browser:
+
+- On the left side, there is a client (IP: 192.168.0.9) trying to access http://example.com.
+
+Load Balancer (IP: 192.168.0.10):
+
+- The client's request first reaches the Load Balancer.
+
+Packet Details:
+- The box below shows that the packet's FROM address is 192.168.0.9 and the TO address is the Load Balancer's IP address 192.168.0.10.
+- There is a "Message" in between, which the Layer 4 Load Balancer does not inspect or read.
+Backend Instances:
+
+Behind the Load Balancer, there are three backend servers (Backend 1, 2, and 3), each having a separate IP address:
+- Backend 1: 192.168.0.11
+- Backend 2: 192.168.0.12
+- Backend 3: 192.168.0.13
+The Load Balancer distributes incoming traffic among all three servers so that excessive load does not fall on a single server.
+
+3. Layer 7 (L7) Load Balancer
+1. Definition
+A Layer 7 Load Balancer works at the Application Layer of the OSI Model.
+
+It distributes incoming requests among different servers based on URLs, HTTP Headers, Cookies, and application data.
+2. Features
+1. Application Layer: It works at Layer 7 of the OSI Model.
+2. URL Inspection: It checks the URL of the request.
+3. HTTP Headers: It can inspect HTTP headers and cookies.
+4. Content-Based Routing: It selects a suitable server according to the content of the request.
+5. Flexible Routing: It can send different types of requests to different servers.
+3. Example
+Suppose an e-commerce website has different servers:
+- /products → Product Server
+- /payment → Payment Server
+- /images → Image Server
+When a user sends a request, the L7 Load Balancer checks the URL and forwards the request to the appropriate server.
+4. Understanding Layer 7 Load Balancing Through a Diagram
+Client / Browser:
+
+- On the left side, there is a client (192.168.0.9) sending a request.
+
+Load Balancer (IP: 192.168.0.10):
+
+- The request reaches the Load Balancer.
+
+Packet Details:
+
+- The box below shows that the data inside the packet is also being read. For example, the data contains the /post path.
+
+Content-Based / Path-Based Routing (Backend Instances):
+
+Since a Layer 7 Load Balancer can read the URL or content, it can route traffic intelligently:
+- If the request is for /comments, it sends it to the corresponding comment instances.
+- If the request is for /post (as shown in the packet below), it specifically forwards it to the instances handling /post.
+
+4. Load Balancing Algorithms
+1. Introduction
+Load Balancing Algorithms are the techniques used by a Load Balancer to decide which server should handle an incoming client request.
+
+In simple words, these algorithms decide which server should receive an incoming request so that the workload can be properly distributed among all servers.
+Main Types of Load Balancing Algorithms
+1. Round Robin
+2. Least Connections
+3. Consistent Hashing
+2. Round Robin Algorithm
+Definition: Round Robin is a load balancing algorithm in which incoming requests are distributed among available servers one by one in a circular order.
+
+Working:
+1. The Load Balancer has multiple available servers.
+2. The first request is sent to Server 1.
+3. The second request is sent to Server 2.
+4. The third request is sent to Server 3.
+5. After that, the process repeats.
+Example:
+
+Suppose there are three servers: S1, S2, and S3.
+
+Advantages:
+1. Simple and easy to implement.
+2. Requests are distributed equally when they have similar processing requirements.
+3. Low implementation complexity.
+Disadvantages:
+1. It does not consider server capacity.
+2. If a request requires more processing, the workload may become unequal.
+Example: Basic web servers handling similar requests.
+
+3. Least Connections Algorithm
+Definition: Least Connections is a load balancing algorithm in which incoming requests are sent to the server having the minimum number of active connections.
+
+Working:
+1. The Load Balancer checks the active connections of all servers.
+2. It assigns a new request to the server having the lowest number of active connections.
+3. This process helps balance the workload among servers.
+Example:
+
+Suppose three servers have the following active connections.
+
+Selected Server:
+
+Server 2, because it has the minimum number of active connections (5).
+
+Advantages:
+1. It balances the server workload better.
+2. It is useful for long-running connections.
+3. It reduces additional load on busy servers.
+Disadvantages:
+1. Active connections have to be tracked.
+2. The connection count does not always represent the actual CPU or memory load.
+3. Monitoring can create additional overhead.
+Example: Video streaming, database connections, and long-running web sessions.
+
+4. Consistent Hashing Algorithm
+Definition: Consistent Hashing is a load balancing technique that uses a hash function to distribute requests among servers. It tries to ensure that the same key or client is mapped to the same server.
+
+In simple words, Consistent Hashing is a Load Balancing technique that distributes requests among different servers with the help of a hash function. In this technique, the same key or request generally goes to the same server.
+
+Working:
+1. All servers are assigned a hash value with the help of a hash function.
+2. The hash of the incoming request's key is also calculated.
+3. The request is placed on the hash ring.
+4. The request is sent to the next server found in the clockwise direction.
+5. If a server is added or removed, only some requests change their assigned server.
+Example:
+
+Suppose there are three servers:
+- Server A
+- Server B
+- Server C
+If a user's request goes to Server A, then the next request with the same key will generally also go to Server A.
+
+If Server B is removed, only some requests related to it will shift to other servers. All requests do not need to be redistributed again.
+
+Advantages:
+1. Adding or removing servers is easy.
+2. Request redistribution is reduced.
+3. It is useful in distributed systems.
+4. It is helpful in caching systems.
+Disadvantages:
+1. Implementation is comparatively complex.
+2. Virtual Nodes may be required for proper distribution.
+3. Selection of the hash function is important.
+
+
+
+
+Part D: Caching
+1. Introduction to Caching
+1. Meaning / Definition
+Caching is a technique in which frequently accessed data is stored temporarily in a fast storage location called Cache, so that future requests can access the data quickly.
+
+In simple words, caching means temporarily storing frequently used data so that there is no need to fetch the same data repeatedly from the original database.
+
+Example:
+
+Suppose 1,000 users frequently access a particular product on a website.
+- Without Caching: Every request fetches the data from the database.
+- With Caching: The first request fetches the data from the database and stores it in the cache. The next requests receive the data directly from the cache.
+This reduces response time and also decreases the load on the database.
+2. Working of Caching
+Two Main Scenarios (Flow):
+
+Scenario A: Cache Hit (Green Path – Fast)
+1. When the client sends a request to the application, the application first checks the cache.
+2. If the requested data is found in the cache, it is called a Cache Hit.
+3. In this case, the data is immediately returned through the following path:
+Cache → Application → Client
+
+4. Benefit: There is no need to access the main database, so the system responds very quickly.
+
+Scenario B: Cache Miss (Red Path – Slow / Normal)
+1. If the requested data is not found in the cache, it is called a Cache Miss.
+2. In this case, the application has to fetch the data from the database.
+3. After receiving the data from the database, the application performs two tasks:
+   - It updates (stores) the data in the cache for future use.
+   - It returns the data to the client.
+Working Steps
+1. The client sends a data request to the server.
+2. The application first checks the cache.
+3. If the data is available in the cache, it is called a Cache Hit.
+4. If the data is not available in the cache, it is called a Cache Miss.
+5. When a cache miss occurs, the data is fetched from the database.
+6. The data is stored in the cache, and a response is sent to the client.
+3. Important Terms
+- Cache Hit: When the requested data is found in the cache.
+- Cache Miss: When the requested data is not found in the cache.
+- Cache Eviction: When old data is removed from the cache to create space.
+- Cache Expiration (TTL): Cached data expires after a fixed period of time.
+4. Advantages of Caching
+1. Faster Response: Data can be accessed quickly.
+2. Reduced Database Load: The number of requests sent to the database decreases.
+3. Better Performance: The overall performance of the application improves.
+4. Scalability: The application can handle more users.
+5. Cost Reduction: Consumption of database resources decreases.
+
+2. Cache-Aside Caching
+1. Meaning / Definition
+Cache-Aside is a caching strategy in which the application itself manages the cache. The application first checks the cache. If the data is not found in the cache, it fetches the data from the database and stores it in the cache.
+
+It is also called Lazy Loading.
+2. Working of Cache-Aside
+Working Steps:
+1. The client requests data.
+2. The application first checks the cache.
+3. If the data is found, a response is returned directly from the cache.
+4. If the data is not found (Cache Miss), the application fetches the data from the database.
+5. The application stores the fetched data in the cache.
+6. Finally, the data is returned to the client.
+3. Example
+Suppose a user checks the details of a product on an e-commerce website.
+
+First Request:
+1. The product is not available in the cache.
+2. The application fetches the product details from the database.
+3. The product details are stored in the cache.
+Second Request:
+
+1. The same product is received directly from the cache.
+
+This reduces repeated requests to the database.
+4. Advantages
+1. Simple and easy to implement.
+2. Only frequently requested data is stored in the cache.
+3. Reduces database load.
+4. Even if the cache fails, the application can still fetch data from the database.
+
+3. Write-Through Caching
+1. Meaning / Definition
+Write-Through is a caching strategy in which data is written into both the cache and the database simultaneously whenever an application performs a write operation.
+
+In simple words, whenever the application updates or inserts data, the data is updated in both the cache and the database at the same time.
+2. Working of Write-Through Caching
+Working Steps:
+1. The client sends a data write or update request to the application.
+2. The application sends a request to the cache to update the data.
+3. The cache also writes the data into the database.
+4. The operation is completed after the data has been updated in both the cache and the database.
+5. Future read requests can receive the updated data from the cache.
+3. Example
+Suppose the price of a product on an e-commerce website needs to be updated from ₹500 to ₹600.
+1. The application sends an update request.
+2. The price is updated to ₹600 in the cache.
+3. The price is also updated to ₹600 in the database.
+4. Now, users will receive the updated price.
+4. Advantages
+1. Data Consistency: Updated data is maintained in both the cache and the database.
+2. Easy Management: Updating data is simple.
+3. Reduced Stale Data: The possibility of serving old data is reduced.
+4. Reliable Reads: Updated data is available for future requests.
+
+4. Write-Back Caching
+1. Meaning / Definition
+Write-Back is a caching strategy in which data is first written into the cache, and the database is updated later after a certain period of time or when specific conditions are met.
+
+In simple words, when the application updates data, the cache is updated first. The database is not updated immediately; instead, it is updated later.
+
+It is also called Write-Behind Caching.
+2. Working of Write-Back Caching
+Working Steps:
+1. The client sends a data write or update request to the application.
+2. The data is first written into the cache.
+3. The application may receive a response once the cache write is successful.
+4. The database is not updated immediately.
+5. After some time, the cache writes the updated data into the database.
+6. Finally, the cache and database become synchronized.
+3. Example
+Suppose an account balance needs to be updated in a banking application.
+- Current Balance = ₹5,000
+- New Balance = ₹6,000
+Write-Back Process:
+1. First, the balance is updated to ₹6,000 in the cache.
+2. The database is not updated immediately.
+3. After some time, the balance in the database is also updated to ₹6,000.
+Note: In critical systems such as banking, proper durability and recovery mechanisms are necessary to avoid data loss. A simple Write-Back implementation can be risky.
+4. Advantages
+1. Fast Write Operation: Data is first written into the cache.
+2. Better Performance: Write latency is reduced.
+3. Reduced Database Load: Multiple updates can be combined before writing them into the database.
+4. Efficient Processing: The number of database operations can decrease.
+
+5. Write-Around Caching
+1. Meaning / Definition
+Write-Around is a caching strategy in which data is written directly into the database without updating the cache.
+
+In simple words, when the application writes or updates new data, the data is stored directly in the database. The cache is not updated.
+
+When a request for the same data arrives in the future and the data is not found in the cache, it can be fetched from the database and loaded into the cache.
+2. Working of Write-Around Caching
+Working Steps:
+1. The client sends a write request to the application.
+2. The application bypasses the cache and writes the data directly into the database.
+3. The data is not updated in the cache.
+4. When the user reads the same data, the application checks the cache.
+5. If the data is not found in the cache (Cache Miss), it is fetched from the database.
+6. Depending on the implementation, the fetched data can be stored in the cache.
+3. Example
+Suppose a new product is added to an e-commerce website.
+1. The product details are saved directly in the database.
+2. The cache is not updated.
+3. When a user checks the product for the first time, a Cache Miss occurs.
+4. The product details are fetched from the database.
+5. The product details can be stored in the cache.
+6. The next request may receive the data directly from the cache.
+4. Advantages
+1. Cache Pollution Reduction: Unnecessary data is not stored in the cache.
+2. Reduced Cache Updates: The cache does not need to be updated for every write operation.
+3. Efficient Storage: Frequently accessed data can be given priority in the cache.
+4. Useful for Write-Heavy Systems: It is useful for data that is written frequently but read rarely.
+
+6. LRU (Least Recently Used) Caching
+1. Meaning / Definition
+LRU stands for Least Recently Used.
+
+LRU is a Cache Replacement Algorithm that removes the data which has not been accessed for the longest time when the cache becomes full.
+
+In simple words, when the cache becomes full, the data that has not been used for the longest time is removed from the cache.
+2. Working of LRU
+Working Steps:
+1. The cache has limited storage capacity.
+2. When new data is requested, the cache is checked.
+3. If the data is available, it is marked as recently used.
+4. If the data is not available and there is space in the cache, the new data is added.
+5. If the cache is full, the least recently used data is removed.
+6. The newly requested data is added to the cache.
+3. Example of LRU
+Suppose the cache capacity = 3 items.
+
+Initially, A, B, and C are stored in the cache.
+
+LRU = Least Recently Used
+
+MRU = Most Recently Used
+
+Explanation:
+1. Initially, A, B, and C are present in the cache.
+2. When A is accessed, A becomes the Most Recently Used item.
+3. When B is accessed, B becomes the Most Recently Used item.
+4. Now, D needs to be added, but the cache is full.
+5. C has remained unused for the longest time, so C is removed.
+6. D is added to the cache.
+4. Advantages of LRU
+1. Better Cache Utilization: Frequently used data remains available in the cache.
+2. Improved Performance: Repeated requests are processed quickly.
+3. Automatic Replacement: When the cache becomes full, old data is automatically removed.
+4. Simple Logic: Its concept is easy to understand and implement.
+
+7. Redis (Remote Dictionary Server)
+1. Meaning / Definition
+Redis stands for Remote Dictionary Server.
+
+Redis is an open-source, in-memory data store that is used as a database, cache, and message broker.
+
+In simple words, Redis is a high-speed storage system that mainly stores data in RAM (Memory), allowing data to be accessed quickly.
+
+Redis is commonly used in System Design for caching, session management, and real-time applications.
+2. Features of Redis
+1. In-Memory Storage: Redis mainly stores data in RAM, so data can be accessed quickly.
+2. High Performance: Redis performs fast read and write operations.
+3. Data Structures: Redis supports Strings, Lists, Sets, Hashes, and Sorted Sets.
+4. Persistence: Redis can save data to disk so that it can be recovered after a restart.
+5. Replication: Redis can maintain copies of data on multiple servers.
+6. TTL (Time To Live): An expiration time can be set for data in Redis. When the time is completed, the data is automatically deleted.
+7. Scalability: With the help of Redis Cluster, data can be distributed across multiple nodes (servers).
+3. Working of Redis
+Step-by-Step Flow:
+
+Step 1: Check Cache
+
+Whenever the application needs some data, it first checks the Redis Cache (1. Check Cache).
+
+Step 2a: Cache HIT (If the data is found)
+1. If the data is present in the cache, it is called a Cache HIT.
+2. In this case, the data is immediately sent back to the application (2a. Cache HIT Return Data).
+3. There is no need to access the database.
+Step 2b and Step 3: Cache MISS and Query DB (If the data is not found)
+1. If the data is not found in the cache (Decision: In Cache? → No), it becomes a Cache MISS.
+2. Now, the application/cache has to request the data from the database (3. Query DB).
+Step 4 and Step 5: Store in Cache and Return
+
+As soon as the data is received from the database, two things happen:
+1. The data is stored in the Redis Cache for future use (4. Store in Cache).
+2. The data is returned to the application (5. Return Data to Application) so that the client can receive the response.
+Working Steps
+1. The client sends a data request to the application.
+2. The application checks the Redis Cache.
+3. If the data is available, Redis directly returns the data. This is called a Cache Hit.
+4. If the data is not available, the application fetches the data from the database. This is called a Cache Miss.
+5. The fetched data is stored in Redis.
+6. The next request receives the data quickly from Redis.
+4. Example
+Suppose users frequently check mobile phone details on an e-commerce website.
+1. First Request: Mobile phone details are fetched from the database.
+2. The details are stored in Redis.
+3. Second Request: The details are received directly from Redis.
+This reduces database load and response time.
+5. Advantages of Redis
+1. Very fast data access.
+2. Reduces database load.
+3. Supports multiple data structures.
+4. Provides TTL and expiration.
+5. Supports persistence and replication.
+
+8. Memcached
+1. Meaning / Definition
+Memcached is an open-source, high-performance, distributed in-memory caching system used to store frequently accessed data in RAM.
+
+In simple words, Memcached is a caching system that temporarily stores frequently used data in RAM so that there is no need to fetch the same data repeatedly from the database.
+
+Its main purpose is to improve application speed and reduce database load.
+2. Features of Memcached
+1. In-Memory Storage: Memcached stores data in RAM, allowing data to be accessed quickly.
+2. High Performance: It provides fast read and write operations.
+3. Simple Key-Value Storage: It stores data in the form of Key-Value pairs.
+4. Distributed Caching: Cache can be distributed across multiple Memcached servers.
+5. Automatic Expiration: TTL (Time To Live) can be set for data. When the time is completed, the data automatically expires.
+6. LRU Eviction: When memory becomes full, it can generally remove Least Recently Used (LRU) items to make space for new data.
+3. Working of Memcached
+Working Steps:
+1. The client application sends a data request.
+2. The application searches for the data on the Memcached server.
+3. If the data is available, Memcached returns it directly. This is called a Cache Hit.
+4. If the data is not available, the application fetches it from the database.
+5. The fetched data is stored in Memcached in the form of Key-Value pairs.
+6. The next request receives the data directly from Memcached.
+4. Example
+Suppose students frequently check their profile details on a student portal.
+1. On the first request, the profile details are fetched from the database.
+2. The details are stored in Memcached.
+3. On the next request, the profile details are received directly from Memcached.
+4. This reduces the load on the database.
+5. Advantages of Memcached
+1. Fast Performance: RAM-based storage provides fast data access.
+2. Simple Architecture: It is easy to use because of its Key-Value structure.
+3. Reduced Database Load: Repeated database queries are reduced.
+4. Scalability: Cache capacity can be increased by adding multiple servers.
+5. Low Overhead: It is efficient for simple caching operations.
+
+9. Difference Between Redis and Memcached
+Redis and Memcached both store data in RAM, allowing data to be accessed quickly.
+
+Redis provides more features, whereas Memcached is mainly used for caching.
+
+Note: The uploaded notes contain this heading and the introductory comparison above, but the detailed comparison table or further points are not present in the provided content.
+
+Part E: Database Concepts
+1. Introduction to Database in System Design (10 Marks)
+1. Meaning / Definition
+A Database is an organized collection of data that is stored electronically and can be easily accessed, managed, updated, and retrieved.
+
+In System Design, a database is used to store and manage the important data of an application.
+
+Simple Example:
+
+Suppose there is an Instagram application. Different types of data are stored in it:
+- User details
+- Username and Password
+- Photos and Videos
+- Likes and Comments
+- Messages and Followers
+All this data is stored and managed in the database.
+2. Role of Database in System Design
+1. Data Storage: Permanently stores the important data of an application.
+2. Data Retrieval: Quickly searches and retrieves the required data.
+3. Data Management: Provides the facility to insert, update, and delete data.
+4. Data Security: Helps protect data from unauthorized access.
+5. Data Consistency: Helps maintain accurate and consistent data.
+6. Scalability: Helps increase data storage capacity according to the growing needs of an application.
+3. Types of Databases
+Databases are mainly divided into two major categories:
+A. Relational Database (SQL)
+Definition: In a Relational Database, data is stored in the form of tables containing rows and columns.
+
+Features:
+1. Table Format: Data is stored in rows and columns.
+2. Relationships: Connections can be created between different tables.
+3. SQL: SQL is used to insert, update, delete, and retrieve data.
+4. Fixed Schema: Data is stored in a predefined structure.
+5. ACID Transactions: Helps keep data safe and correct.
+Examples: MySQL, PostgreSQL, Oracle Database.
+
+Example:
+
+Suppose there is a Student Database:
+Student_ID	Name	Course
+101	Rahul	B.Tech
+102	Aman	BCA
+103	Rohit	B.Tech
+
+Examples of SQL Databases:
+- MySQL
+- PostgreSQL
+- Oracle Database
+- Microsoft SQL Server
+B. Non-Relational Database (NoSQL)
+Definition: In a NoSQL Database, data is stored in different formats other than traditional tables, such as Documents, Key-Value pairs, and Graphs.
+
+Features:
+1. Flexible Data Model: Data can be stored in different formats.
+2. Different Data: It can store structured, semi-structured, and unstructured data.
+3. Large Applications: It is useful for large applications.
+4. Horizontal Scaling: Database capacity can be increased by adding multiple servers.
+5. Different Data Models: It supports models such as Document, Key-Value, Graph, and Wide-Column.
+Examples: MongoDB, Redis, Cassandra, Neo4j.
+
+Example (Document Format):
+{
+  "name": "Rahul",
+  "age": 21,
+  "city": "Dehradun"
+}
+
+
+In this format, the complete user data is stored in the form of a single document.
+
+Examples of NoSQL Databases:
+- MongoDB
+- Redis
+- Apache Cassandra
+- Amazon DynamoDB
+
+2. ACID Properties
+1. Meaning / Definition
+ACID stands for:
+- A – Atomicity
+- C – Consistency
+- I – Isolation
+- D – Durability
+ACID Properties are a set of rules that ensure reliable and secure database transactions.
+
+In simple words, ACID properties ensure that database transactions are executed properly, data remains accurate, and data does not get corrupted if a problem occurs during a transaction.
+
+Example:
+
+Suppose Rahul has ₹10,000 in his bank account and he transfers ₹2,000 to Aman.
+
+In this transaction:
+- ₹2,000 will be deducted from Rahul's account.
+- ₹2,000 will be added to Aman's account.
+Both operations must be completed successfully.
+2. Four ACID Properties
+1. Atomicity
+Definition: Atomicity means that a transaction is treated as a single unit. Either all operations are completed successfully or none of them are applied.
+
+In simple words, either all the operations of a transaction will be completed or not even one operation will be finalized.
+
+Example: Bank Transfer
+
+Rahul transfers ₹2,000 to Aman.
+
+Two operations are involved:
+1. Deduct ₹2,000 from Rahul's account.
+2. Add ₹2,000 to Aman's account.
+If the first operation is successful but the second operation fails, the transaction will be rolled back.
+
+Important Terms:
+- Commit: Successfully completing a transaction.
+- Rollback: Undoing changes when a transaction fails.
+2. Consistency
+Definition: Consistency ensures that a database remains correct and follows all rules before and after a transaction.
+
+In simple words, after a transaction is completed, the database must contain correct data and follow all the rules.
+
+Example:
+
+Rahul has ₹10,000 in his account.
+
+Rahul transfers ₹2,000 to Aman.
+
+After the transaction:
+- Rahul = ₹8,000
+- Aman = ₹2,000
+- Total Amount = ₹10,000
+This means that the total amount must remain the same even after the transaction.
+
+Main Purpose: To maintain the accuracy and correctness of data.
+3. Isolation
+Definition: Isolation ensures that multiple transactions executing at the same time do not interfere with each other.
+
+In simple words, if multiple users are accessing the database simultaneously, the incomplete result of one transaction should not incorrectly affect another transaction.
+
+Example:
+
+Suppose Rahul has ₹5,000 in his account.
+
+Two transactions are executing simultaneously:
+- Transaction A: Withdraw ₹1,000.
+- Transaction B: Withdraw ₹2,000.
+The database must ensure that both transactions are executed properly and that an incorrect balance is not calculated.
+
+Main Purpose: To prevent data conflicts and incorrect results between concurrent transactions.
+4. Durability
+Definition: Durability ensures that once a transaction is successfully committed, its changes remain permanently stored, even if a system failure occurs.
+
+In simple words, after a transaction is successful, even if the system crashes, the saved data should not be lost.
+
+Example:
+
+Rahul transfers ₹2,000 to Aman.
+- The transaction is successfully completed.
+- The database commits the transaction.
+- Suddenly, the system crashes.
+Even after the system restarts, the updated account balances should remain available.
+
+Main Purpose: To maintain committed data safely and permanently.
+
+3. BASE Properties in DBMS (System Design)
+1. Introduction to BASE Properties
+BASE is a set of principles mainly used in Distributed Databases and NoSQL Databases.
+
+The main purpose of BASE is to make a system:
+- Highly Available.
+- Easily Scalable.
+- Provide fast responses.
+- Handle large amounts of data.
+BASE is an alternative approach to ACID properties. ACID focuses on strong consistency, whereas BASE focuses on high availability and performance.
+
+Full Form of BASE:
+- B – Basically Available
+- A – Soft State
+- E – Eventually Consistent
+2. Basically Available (B)
+Basically Available means that the database system will remain mostly available and continue responding to user requests, even if one of the system's servers fails.
+
+Example:
+
+Suppose an e-commerce website has three servers.
+- Server 1 is working.
+- Server 2 is working.
+- Server 3 fails.
+Even after Server 3 fails, the website can respond to users with the help of Server 1 and Server 2.
+
+Some data may be temporarily unavailable or outdated, but the system will continue working.
+
+Key Points:
+- The system remains available.
+- It handles partial server failures.
+- It tries to respond to users even during failures.
+3. Soft State (S)
+Soft State means that the state of data stored in a database can change temporarily, even without a new user request.
+
+This happens because different servers in a distributed system continuously synchronize their data in the background.
+
+Example:
+
+Suppose you change your profile picture on a social media application.
+- The new profile picture is updated on Server 1.
+- Server 2 still has the old profile picture.
+- After some time, Server 2 also receives the updated picture.
+During this synchronization process, different servers may contain different data.
+
+Key Points:
+- Data can be temporarily inconsistent.
+- Different servers may have different versions of data.
+- Data gets updated through background synchronization.
+4. Eventually Consistent (E)
+Definition: Eventually Consistent means that if no new updates are made to the database, all servers will have the same data after some time.
+
+In simple words, data on different servers may be temporarily different, but after some time, the data on all servers becomes the same.
+
+Example:
+
+Suppose your account balance is updated from ₹1,000 to ₹2,000.
+- Server 1 shows a balance of ₹2,000.
+- Server 2 temporarily shows a balance of ₹1,000.
+- After some time, Server 2 will also show ₹2,000.
+Key Points:
+- Data may be temporarily different.
+- Servers synchronize data in the background.
+- Eventually, all servers have the same data.
+5. Advantages of BASE Properties
+1. High Availability: Even if some servers fail, the system continues working.
+2. Scalability: New servers can easily be added to handle more users.
+3. Better Performance: The system does not have to wait for every server to synchronize.
+4. Fault Tolerance: The system can handle partial failures.
+5. Big Data Support: It is useful for handling large amounts of distributed data.
+6. Difference Between ACID and BASE
+Basis	ACID	BASE
+1. Full Form	Atomicity, Consistency, Isolation, Durability	Basically Available, Soft State, Eventually Consistent
+2. Main Focus	Keeping data correct.	Keeping the system available.
+3. Consistency	Data is immediately consistent.	Data becomes consistent after some time.
+4. Availability	Availability may be affected.	Focuses on keeping the system available.
+5. Data State	Data remains correct.	Data may temporarily be different.
+6. Transactions	Focuses on safe transactions.	Focuses on distributed operations.
+7. Performance	Can be comparatively slow.	Can provide fast responses.
+8. Scalability	Scaling can be comparatively difficult.	Adding multiple servers is easier.
+9. Data Accuracy	Maintains data accuracy.	Old data may be displayed for some time.
+10. Usage	SQL Databases.	NoSQL Databases.
+11. Examples	MySQL, PostgreSQL.	Cassandra, Amazon DynamoDB.
+
+
+4. CAP Theorem
+System Design – Exam-Ready Answer
+1. Introduction
+CAP Theorem is an important principle of distributed systems. It was proposed by Eric Brewer.
+
+According to the CAP Theorem, during a network partition, a distributed system cannot guarantee both Consistency (C) and Availability (A) simultaneously. The system has to prioritize either C or A while maintaining Partition Tolerance (P).
+2. Three Properties of CAP Theorem
+1. Consistency (C)
+Consistency means that the same and latest data should be available on all nodes of a distributed system.
+- Every user should receive updated data.
+- After data is updated, all nodes should be consistent.
+Example: After a bank account balance is updated, the same balance should be displayed on all servers.
+2. Availability (A)
+Availability means that the system should respond to every valid request, even if the data is not the latest.
+- The system should remain continuously accessible.
+- Every request should receive a response.
+- The system should not reject a request simply because some nodes are unavailable.
+Example: Users should continue receiving responses even when a server fails.
+3. Partition Tolerance (P)
+Partition Tolerance means that a distributed system should continue operating even when a network failure occurs.
+- During a network partition, nodes cannot communicate with each other.
+- The system must handle this network failure.
+Example: Two servers cannot connect to each other because of a network failure, but the system should continue working.
+3. Types of CAP Systems
+Type	Meaning	Behavior
+CP	Consistency + Partition Tolerance	Maintains the latest data, but some requests may be rejected.
+AP	Availability + Partition Tolerance	Responds to requests, but data may be temporarily different.
+CA	Consistency + Availability	Does not guarantee Partition Tolerance.
+
+CP System
+- Prioritizes Consistency and Partition Tolerance.
+- During a network partition, some requests may be blocked or rejected.
+- Banking systems often prefer CP-like behavior.
+AP System
+- Prioritizes Availability and Partition Tolerance.
+- Provides responses even during a network partition (failure).
+- Data may be temporarily inconsistent.
+- Data can be synchronized after the network recovers.
+- When the network connection becomes normal again, both servers can update their data and make it the same.
+CA System
+- Provides Consistency and Availability.
+- Does not tolerate network partitions.
+- When a partition occurs, it is not possible to guarantee both C and A.
+Important Terms:
+- Network Failure: A problem occurring in a network connection.
+- Network Partition: A situation in which servers cannot communicate with each other because of a network failure.
+
+5. Database Replication
+1. Introduction
+Database Replication is a process in which multiple copies (replicas) of the same database are maintained on different servers.
+
+Its main purpose is to improve data availability, reliability, and fault tolerance.
+
+Simple Example:
+
+Suppose a database is present on Server A. Its copies are also maintained on Server B and Server C.
+
+If Server A fails, data can be accessed from Server B or Server C.
+2. Types of Database Replication
+1. Master-Slave Replication
+- It contains one Master server and multiple Slave servers.
+- Data is written and updated on the Master server.
+- Slave servers copy data from the Master server.
+- Slave servers generally handle read requests.
+Example: When a user's data is updated on the Master server, its copy is also sent to the Slave servers.
+2. Master-Master Replication
+- Multiple servers can perform both read and write operations.
+- Each server synchronizes updates with the other servers.
+- Write conflicts must be handled.
+Example: Data can be updated on both Server A and Server B.
+3. Advantages of Replication
+1. High Availability: If one server fails, another server can continue working.
+2. Fault Tolerance: The system can handle server failures.
+3. Better Read Performance: Multiple servers can handle read requests.
+4. Data Backup: Multiple copies of data are available.
+5. Reliability: The reliability of the system improves.
+4. Disadvantages of Replication
+1. Storage Cost: Extra storage is required to store multiple copies.
+2. Synchronization: Keeping all replicas updated can be difficult.
+3. Replication Lag: Updates may take time to reach other servers.
+4. Conflict: Updates on multiple servers can create conflicts.
+
+6. Database Sharding
+1. Introduction
+Database Sharding is a technique in which a large database is divided into smaller parts. These smaller parts are called Shards.
+
+Each shard stores a different portion of the database, and these shards are maintained on different servers.
+
+Its main purpose is to horizontally scale the database and improve performance.
+
+Simple Example:
+
+Suppose a database contains data of 1 crore users.
+
+We can divide the users among three servers:
+- Server A: User ID 1–100
+- Server B: User ID 101–200
+- Server C: User ID 201–300
+Now, each server will store only the data of its assigned users.
+2. Types of Database Sharding
+1. Range-Based Sharding
+- Data is divided according to specific ranges.
+- Each shard stores data belonging to a particular range.
+Example:
+- Shard A: User ID 1–1000
+- Shard B: User ID 1001–2000
+- Shard C: User ID 2001–3000
+Simple Explanation: Data is stored on different servers according to the range of User IDs.
+2. Hash-Based Sharding
+- Data is distributed among different shards with the help of a hash function.
+- This helps distribute data evenly.
+Example:
+
+Shard Number = User ID % 3
+- User ID 101 → Shard 2
+- User ID 102 → Shard 0
+- User ID 103 → Shard 1
+Simple Explanation: The hash function decides which server will store the data.
+3. Geographic Sharding
+- Data is divided according to the geographical location of users.
+- Data belonging to each region is stored on that region's server.
+Example:
+- India users → India Server
+- USA users → USA Server
+- UK users → UK Server
+3. Advantages of Sharding
+1. Horizontal Scaling: Database capacity can be increased by adding more servers.
+2. Better Performance: Each server contains less data, so queries can be faster.
+3. Load Distribution: The database load is divided among multiple servers.
+4. Large Data Handling: Large amounts of data can be managed easily.
+5. Reduced Server Load: A single server does not have to handle the load of the entire database.
+4. Disadvantages of Sharding
+1. Complexity: Managing the database becomes difficult.
+2. Data Rebalancing: As data grows, it may be necessary to move data between shards.
+3. Cross-Shard Queries: Fetching data from multiple servers can be difficult.
+4. Joins: Joining data from different shards becomes complex.
+5. Shard Key Selection: Choosing the wrong shard key can cause one server to receive more load than others.
+
+
